@@ -1,0 +1,19 @@
+.well{
+  margin-top: 15px;
+}
+
+.items-table th{
+  text-align: center;
+}
+
+.items-table td{
+  line-height: 34px;
+}
+
+.items-table th:first-child{
+  width:120px;
+}
+
+.items-table img { 
+  height:34px;
+}

@@ -1,0 +1,21 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-4" [class.hidden]="item.flag != true" *ngFor="let item of data | async">
+      <div class="groupbuy-wrapper" *ngIf="item.flag == true">
+        <div class="groupbuy">
+          <div class="gbhead" (click)="GoBuying(item.$key)">
+            <img [src]="item.photo" class="img-responsive" alt="" />
+          </div>
+          <div class="gbbody">
+            <h2>{{ item.name }}</h2>
+            <hr/>
+            <h3 class="creator">發起人: {{ item.creator }}</h3>            
+            <p [innerHTML]="item.desc | strLimit:5">
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

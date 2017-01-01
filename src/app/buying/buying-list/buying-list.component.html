@@ -1,0 +1,37 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-3">
+        <i class="fa fa-shopping-basket fa-3x"></i>
+      </div>
+      <div class="col-xs-9 text-right">
+        <div class="panel-heading-title">已選商品</div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <ol class="item-list">
+      <li *ngFor="let item of data | async">
+        {{ item.name }}
+        <small>{{ item.desc }}</small>
+        <button class="pull-right btn btn-danger" (click)="cancel(item.$key)">取消</button>
+        <button class="pull-right btn btn-info" (click)="UpdateModal(item.$key)">備註</button>
+        <span class="pull-right">$ {{ item.price }}</span>
+      </li>
+    </ol>
+  </div>
+</div>
+
+
+<modal #descmodal>
+  <modal-header [show-close]="true">
+    <h4 class="modal-title">商品列表</h4>
+  </modal-header>
+  <modal-body>
+    <input type="text" class="form-control" placeholder="ex:半糖少冰" (keypress)="keyupdatedesc($event)" #txtdesc />
+  </modal-body>
+  <modal-footer>
+    <button type="button" class="btn btn-default" data-dismiss="productmodal" (click)="productmodal.dismiss()">Back</button>
+    <button type="button" class="btn btn-primary" data-dismiss="productmodal" (click)="UpdateDesc()">Submit</button>
+  </modal-footer>
+</modal>

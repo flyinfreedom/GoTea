@@ -1,0 +1,25 @@
+<div class="productList">
+  <div class="productListWrapper" #productListWrapper>
+    <ol class="row">
+      <li *ngFor="let item of Pdata | async">
+        <input type="text" class="txt_underLine" [value]="item.name" (keypress)="singleUpdate($event, item.$key, 'name')" />        $.
+        <input type="number" class="txt_underLine" [value]="item.price" (keypress)="singleUpdate($event, item.$key, 'name')" />
+        <i class="fa fa-remove" (click)="DeleteProduct(item.$key)"></i>
+      </li>
+    </ol>
+  </div>
+
+  <form [formGroup]="ProductForm" class="row">
+    <label for="productName" class="control-label col-md-2">名稱</label>
+    <div class="col-md-6">
+      <input #productName id="productName" type="text" class="form-control" formControlName="name" (keypress)="FastAdd($event)"
+      />
+    </div>
+    <label for="productPrice" class="control-label col-md-2">金額</label>
+    <div class="col-md-2">
+      <input id="productPrice" type="number" class="form-control" formControlName="price" (keypress)="FastAdd($event)" />
+    </div>
+  </form>
+
+  <button class="btn btn-primary btn-block" (click)="AddProduct()">新增</button>
+</div>

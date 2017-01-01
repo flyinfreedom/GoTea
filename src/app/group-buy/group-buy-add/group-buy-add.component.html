@@ -1,0 +1,27 @@
+<button class="btn btn-primary" type="button" (click)="modal.open()">新增</button>
+
+<modal #modal>
+  <modal-header [show-close]="true">
+    <h4 class="modal-title">新增</h4>
+  </modal-header>
+  <modal-body>
+    <form [formGroup]="GroupBuyForm">
+      <div class="form-group">
+        <label for="txt_name">團名</label>
+        <input type="text" id="txt_name" class="form-control" formControlName="name" />
+      </div>
+      <div class="form-group">
+        <label for="txt_name">描述</label>
+        <textarea class="form-control" formControlName="desc"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="txt_name">上傳圖片</label>
+        <input type="file" #fphoto id="file_photo" aria-describedby="fileHelp" />
+      </div>
+    </form>
+  </modal-body>
+  <modal-footer>
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="create()">submit</button>
+  </modal-footer>
+</modal>

@@ -1,0 +1,31 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-3">
+        <i class="fa fa-shopping-cart fa-3x"></i>
+      </div>
+      <div class="col-xs-9 text-right">
+        <div class="panel-heading-title">商品清單</div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <ol class="item-list">
+      <!--<li *ngFor="let item of data | async" [class.hidden]="productHidden(item)">-->
+      <li *ngFor="let item of data" [class.hidden]="productHidden(item)">
+        {{ item.name }} 
+        <button class="pull-right btn btn-warning" (click)="JoinMyBasket(item.$key)">加入</button>
+        <span class="pull-right">$ {{ item.price }}</span></li>
+    </ol>
+
+    <nav class="paging">
+      <ul class="pagination">
+        <li [class.disabled]="currentPage == 1" (click)="previous()"><span aria-hidden="true">&laquo;</span></li>
+        <li *ngFor="let item of pageCount"  [class.active]="activeclass(item)" (click)="goto(item)">
+          <span>{{ item }} <span class="sr-only">(current)</span></span>
+        </li>
+        <li [class.disabled]="currentPage == pageCount.length" (click)="next()"><span aria-hidden="true">&raquo;</span></li>
+      </ul>
+    </nav>
+  </div>
+</div>

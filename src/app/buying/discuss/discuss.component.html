@@ -1,0 +1,31 @@
+<div class="row buyingdiscussion">
+  <div class="col-md-12 item-list-block">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-comments fa-3x"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="panel-heading-title">討論區</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="msgBlock" #msgBlock>
+          <p *ngFor="let item of data" [class.text-right]="item.userid == fbsvc.uid">
+            <span>
+              {{ item.msg | message:item.userid :item.user }}
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-xs-9"><input #msg type="text" class="form-control" (keypress)="fastsend($event)"></div>
+          <div class="col-xs-3"><button class="btn btn-primary btn-block" (click)="sendmessge(msg)">送出</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

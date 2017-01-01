@@ -1,0 +1,56 @@
+.msgBlock {
+  height:300px;
+  overflow-y:auto;
+  margin-bottom: 15px;
+}
+
+.msgBlock > p {
+  margin-top: 15px;
+  height: 36px;
+  display: block;
+}
+
+p.text-right {
+  margin-right:10px;
+}
+
+.msgBlock span {
+  background-color: #3c763d;
+  color:#fff;
+  padding:10px 15px;
+  border-radius: 5px;
+}
+
+.msgBlock > .text-right > span {
+  background-color: #dff0d8;
+  color:#333;
+}
+
+
+.item-list li{
+  font-size: 1.2em;
+  line-height: 46px;
+  min-height: 46px;
+  border-bottom: 1px solid #eee;
+}
+
+.item-list li button{
+  margin:5px;
+}
+
+.item-list li small{
+  color:#31708f;
+}
+
+
+.paging{
+  display: table;
+  margin:auto;
+}
+
+.panel-heading-title{
+  font-size: 20px;
+  line-height: 22px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

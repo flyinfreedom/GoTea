@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="well well-lg">
+    <app-group-buy-add></app-group-buy-add>
+  </div>
+  <table class="table table-hover items-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>圖片</th>
+        <th>名稱</th>
+        <th>功能</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td *ngIf="item.creator == fbsvc.displayName">
+          <div class="btn-group btn-toggle">
+            <button class="btn btn-default" [class.active]="item.flag == true" (click)="ItemFlag(item.$key, true, item.flag)">ON</button>
+            <button class="btn btn-primary" [class.active]="item.flag == false" (click)="ItemFlag(item.$key, false, item.flag)">OFF</button>
+          </div>
+        </td>
+        <td *ngIf="item.creator == fbsvc.displayName">
+          <img [src]="item.photo" [alt]="item.desc" />
+        </td>
+        <td *ngIf="item.creator == fbsvc.displayName">
+          {{ item.name }}
+        </td>
+        <td class="text-right" *ngIf="item.creator == fbsvc.displayName">
+          <button class="btn btn-default" (click)="update(item.$key)">編輯</button>
+          <button class="btn btn-warning" (click)="product(item.$key)">商品</button>
+          <button class="btn btn-danger" (click)="delete(item.$key)">刪除</button>
+          <button class="btn btn-danger" (click)="clearMsg(item.$key)">清除討論</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 以下為編輯用 -->
+
+<modal #editmodal>
+  <modal-header [show-close]="true">
+    <h4 class="modal-title">編輯</h4>
+  </modal-header>
+  <modal-body>
+    <form [formGroup]="GroupBuyForm">
+      <div class="form-group">
+        <label for="txt_name">團名</label>
+        <input type="text" id="txt_name" class="form-control" formControlName="name" />
+      </div>
+      <div class="form-group">
+        <label for="txt_name">描述</label>
+        <textarea class="form-control" formControlName="desc"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="txt_name">上傳圖片</label>
+        <input type="file" #fphoto id="file_photo" aria-describedby="fileHelp" />
+      </div>
+    </form>
+  </modal-body>
+  <modal-footer>
+    <button type="button" class="btn btn-default" data-dismiss="editmodal" (click)="editmodal.dismiss()">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="edit()">submit</button>
+  </modal-footer>
+</modal>
+
+<modal #productmodal>
+  <modal-header [show-close]="true">
+    <h4 class="modal-title">商品列表</h4>
+  </modal-header>
+  <modal-body>
+    <app-group-buy-product [itemId]="itemId"></app-group-buy-product>
+  </modal-body>
+  <modal-footer>
+    <small>可以按 Enter 新增商品喔!!</small>
+    <button type="button" class="btn btn-default" data-dismiss="productmodal" (click)="productmodal.dismiss()">Back</button>
+  </modal-footer>
+</modal>
