@@ -1,18 +1,20 @@
 <div class="container">
-  <form [formGroup]="UserProfileForm">
-    <div class="form-group row">
-      <label for="" class="col-md-2">姓名</label>
-      <div class="col-md-10">
-        <input class="form-control" type="text" formControlName="name" />
+  <div class="main well col-md-8 col-md-offset-2">
+    <form [formGroup]="UserProfileForm">
+      <div class="form-group row">
+        <label for="" class="col-md-2">姓名</label>
+        <div class="col-md-10">
+          <input class="form-control" type="text" formControlName="name" />
+        </div>
       </div>
-    </div>
-    <div class="form-group row">
-      <label for="" class="col-md-2">照片連結</label>
-      <div class="col-md-10">
-        <input class="form-control" type="text" formControlName="photoUrl" />
+      <div class="form-group row">
+        <label for="" class="col-md-2">照片連結</label>
+        <div class="col-md-10">
+          <input class="form-control" type="text" formControlName="photoUrl" />
+        </div>
       </div>
-    </div>
 
-    <button type="btn btn-primary" (click)="updateUserProfile()">更新</button>
-  </form>
+      <button type="button" class="btn btn-primary" (click)="updateUserProfile()">更新</button>
+    </form>
+  </div>
 </div>

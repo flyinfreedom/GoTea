@@ -1,21 +1,28 @@
 <div class="container">
-  <div class="row buyingmain">
-    <div class="col-md-7" *ngIf="data != null">
+  <div class="row buyingmain" *ngIf="data != null">
+    <div class="col-md-7">
       <div class="">
         <img [src]="data.photo" class="img-thumbnail img-responsive" alt="">
       </div>
+    </div>
+    <div class="col-md-5">
       <div>
         <h2>{{ data.name }}</h2>
       </div>
       <div>
         <p [innerHTML]="data.desc | lineFeed"></p>
       </div>
-
-      <app-discuss></app-discuss>
     </div>
-    <div class="col-md-5 item-list-block">
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-md-6">
       <app-product-list></app-product-list>
+    </div>
+    <div class="col-lg-4 col-md-6">
       <app-buying-list></app-buying-list>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <app-discuss></app-discuss>
     </div>
   </div>
 </div>

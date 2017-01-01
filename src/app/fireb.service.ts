@@ -3,13 +3,14 @@ import { AngularFire, AngularFireAuth, FirebaseAuthState, FirebaseListObservable
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 declare var swal: any;
+declare var $: any;
 
 @Injectable()
 export class FirebService {
   public user: FirebaseAuthState;
   public auth: AngularFireAuth;
   public displayName: string;
-  public uid:string;
+  public uid: string;
 
   constructor(private af: AngularFire, private router: Router) {
     this.auth = af.auth;
@@ -66,6 +67,11 @@ export class FirebService {
   logout() {
     this.displayName = "";
     this.auth.logout();
+
+    let flag = $(".navbar-collapse").attr('aria-expanded');
+    if (flag == 'true') {
+      $('.navbar-toggle').click();
+    }
   }
 
   UpdateUserProfile(displayName: string, photoUrl: string) {
@@ -105,15 +111,15 @@ export class FirebService {
     swal("success!", "Update completed", "success");
   }
 
-  AddThen(uri: string, data: any):firebase.Thenable<any> {
+  AddThen(uri: string, data: any): firebase.Thenable<any> {
     return this.af.database.list(uri).push(data);
   }
 
-  UpdateThen(uri: string, data: any):firebase.Thenable<any> {
+  UpdateThen(uri: string, data: any): firebase.Thenable<any> {
     return this.af.database.object(uri).update(data);
   }
 
-  DeleteThen(uri: string):firebase.Thenable<any> {
+  DeleteThen(uri: string): firebase.Thenable<any> {
     return this.af.database.object(uri).remove();
   }
 }

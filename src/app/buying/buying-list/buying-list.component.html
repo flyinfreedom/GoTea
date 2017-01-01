@@ -11,11 +11,10 @@
   </div>
   <div class="panel-body">
     <ol class="item-list">
-      <li *ngFor="let item of data | async">
+      <li *ngFor="let item of data | async" (click)="UpdateModal(item.$key)">
         {{ item.name }}
         <small>{{ item.desc }}</small>
         <button class="pull-right btn btn-danger" (click)="cancel(item.$key)">取消</button>
-        <button class="pull-right btn btn-info" (click)="UpdateModal(item.$key)">備註</button>
         <span class="pull-right">$ {{ item.price }}</span>
       </li>
     </ol>
